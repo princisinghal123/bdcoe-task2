@@ -1,0 +1,7 @@
+rest api-json
+get /users - list all users
+get /users/1 - get the user with id 1
+get /users/2 - get user with id 2
+post /user - create new user
+patch /users/1 - edit the user with id 1
+delete /users/1 - delete the user with id 1
