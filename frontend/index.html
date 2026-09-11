@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Event Seat Booking</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1> Event Seat Booking System</h1>
+        <p>Book your seat easily</p>
+    </header>
+
+    <main>
+        <section class="event-details">
+
+            <h2>Event Details</h2>
+
+            <div class="details">
+                <p><b>Event:</b> Tech Fest 2026</p>
+                <p><b>Date:</b> 20 September 2026</p>
+                <p><b>Venue:</b> College Auditorium</p>
+                <p>
+                    <b>Capacity:</b>
+                    <span id="capacity">60</span>
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- FILTER -->
+        <section class="filter-section">
+
+            <h2>Seat Filtering</h2>
+
+            <select id="categoryFilter">
+                <option value="all">All Categories</option>
+                <option value="VIP">VIP - ₹500</option>
+                <option value="Premium">Premium - ₹300</option>
+                <option value="Regular">Regular - ₹150</option>
+            </select>
+
+            <select id="availabilityFilter">
+                <option value="all">All Seats</option>
+                <option value="available">Available</option>
+                <option value="booked">Booked</option>
+            </select>
+
+        </section>
+
+
+        <!-- LEGEND -->
+        <section class="legend">
+
+            <span>
+                <i class="available-box"></i>
+                Available
+            </span>
+
+            <span>
+                <i class="selected-box"></i>
+                Selected
+            </span>
+
+            <span>
+                <i class="booked-box"></i>
+                Booked
+            </span>
+
+        </section>
+
+
+        <!-- SEAT LAYOUT -->
+        <section class="seat-section">
+
+            <h2>Seat Layout</h2>
+
+            <div class="screen">
+                SCREEN
+            </div>
+
+            <div id="seatContainer"></div>
+
+        </section>
+
+
+        <!-- BOOKING SUMMARY -->
+        <section class="summary">
+
+            <h2>Booking Summary</h2>
+
+            <p>
+                Selected Seats:
+                <span id="selectedSeats">None</span>
+            </p>
+
+            <p>
+                Number of Seats:
+                <span id="seatCount">0</span>
+            </p>
+
+            <p>
+                Total Amount:
+                ₹<span id="totalAmount">0</span>
+            </p>
+
+            <button id="confirmBtn">
+                Confirm Booking
+            </button>
+
+        </section>
+
+
+        <!-- MY BOOKINGS -->
+        <section class="bookings">
+
+            <h2>My Bookings</h2>
+
+            <div id="bookingList">
+                No bookings yet.
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
