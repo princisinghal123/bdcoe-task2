@@ -3,8 +3,6 @@ const prices = {
     Premium: 300,
     Regular: 150
 };
-
-// Create 60 seats
 let seats = [];
 
 for (let i = 1; i <= 60; i++) {
@@ -23,8 +21,6 @@ for (let i = 1; i <= 60; i++) {
         category: category
     });
 }
-
-// Display seats
 function displaySeats() {
     const container = document.getElementById("seatContainer");
     container.innerHTML = "";

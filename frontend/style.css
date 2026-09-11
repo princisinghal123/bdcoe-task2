@@ -38,17 +38,11 @@ h2 {
     margin-top: 0;
 }
 
-
-/* EVENT DETAILS */
-
 .details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-
-
-/* FILTER */
 
 select {
     padding: 10px;
@@ -56,9 +50,6 @@ select {
     border-radius: 6px;
     border: 1px solid #aaa;
 }
-
-
-/* LEGEND */
 
 .legend {
     display: flex;
@@ -91,9 +82,6 @@ select {
     background: #ff7777;
 }
 
-
-/* SCREEN */
-
 .screen {
     width: 70%;
     margin: 20px auto;
@@ -103,9 +91,6 @@ select {
     color: white;
     border-radius: 5px;
 }
-
-
-/* SEATS */
 
 .seat-category {
     margin: 25px 0;
@@ -144,9 +129,6 @@ select {
     cursor: not-allowed;
 }
 
-
-/* SUMMARY */
-
 .summary {
     text-align: center;
 }
@@ -164,9 +146,6 @@ select {
     background: #444;
 }
 
-
-/* BOOKINGS */
-
 .booking-card {
     border: 1px solid #ddd;
     padding: 15px;
@@ -182,9 +161,6 @@ select {
     border-radius: 5px;
     cursor: pointer;
 }
-
-
-/* MOBILE */
 
 @media (max-width: 600px) {
 
