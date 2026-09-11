@@ -4,6 +4,7 @@ const prices = {
     Regular: 150
 };
 let seats = [];
+let selectedSeats = [];
 
 for (let i = 1; i <= 60; i++) {
     let category;
@@ -43,6 +44,14 @@ function displaySeats() {
                 const button = document.createElement("button");
                 button.textContent = seat.id;
                 button.className = "seat";
+                button.dataset.seatId = seat.id;
+                if (seat.booked) {
+                    button.classList.add("booked");
+                    button.disabled = true;
+                } else if (selectedSeats.includes(seat.id)) {
+                    button.classList.add("selected");
+                }
+                button.addEventListener("click", () => toggleSeat(seat.id));
 
                 seatsDiv.appendChild(button);
             });
@@ -52,4 +61,60 @@ function displaySeats() {
     });
 }
 
+function toggleSeat(seatId) {
+    const seat = seats.find(item => item.id === seatId);
+    if (!seat || seat.booked) return;
+
+    if (selectedSeats.includes(seatId)) {
+        selectedSeats = selectedSeats.filter(id => id !== seatId);
+    } else {
+        selectedSeats.push(seatId);
+    }
+
+    updateSummary();
+    displaySeats();
+}
+
+function updateSummary() {
+    const selected = seats.filter(seat => selectedSeats.includes(seat.id));
+    document.getElementById("selectedSeats").textContent = selected.length
+        ? selected.map(seat => seat.id).join(", ")
+        : "None";
+    document.getElementById("seatCount").textContent = selected.length;
+    document.getElementById("totalAmount").textContent = selected.reduce(
+        (total, seat) => total + prices[seat.category],
+        0
+    );
+}
+
+function confirmBooking() {
+    const selected = seats.filter(seat => selectedSeats.includes(seat.id));
+    if (!selected.length) {
+        alert("Please select at least one seat.");
+        return;
+    }
+
+    selected.forEach(seat => {
+        seat.booked = true;
+    });
+
+    const bookingList = document.getElementById("bookingList");
+    if (bookingList.textContent.trim() === "No bookings yet.") {
+        bookingList.textContent = "";
+    }
+
+    const booking = document.createElement("div");
+    booking.className = "booking-card";
+    booking.textContent = `Seats: ${selected.map(seat => seat.id).join(", ")} | Total: ₹${selected.reduce(
+        (total, seat) => total + prices[seat.category],
+        0
+    )}`;
+    bookingList.appendChild(booking);
+
+    selectedSeats = [];
+    updateSummary();
+    displaySeats();
+}
+
+document.getElementById("confirmBtn").addEventListener("click", confirmBooking);
 displaySeats();
